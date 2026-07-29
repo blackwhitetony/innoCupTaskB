@@ -1,0 +1,94 @@
+% AI辅助说明：DeepSeek-V4-Pro，v4，DeepSeek，2026-07-30，
+% 生成/辅助内容：论文主 LaTeX 文件结构、宏包配置、页眉页脚设置。
+% 该内容经作者核对修改后用于 B 题参赛论文。
+
+\documentclass[12pt,a4paper]{ctexart}
+
+% ============ 页面布局 ============
+\usepackage[top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm, headheight=14.5pt]{geometry}
+
+% ============ 中文支持 ============
+% ctexart 使用 pdflatex 编译，自动加载 CJK 宏包
+
+% ============ 页眉页脚 ============
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{TeamB DATA2600409 \quad page \thepage \ of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\cfoot{}
+
+% ============ 数学 ============
+\usepackage{amsmath,amssymb}
+
+% ============ 图形与表格 ============
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% ============ 超链接 ============
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+% ============ 参考文献 ============
+\usepackage[numbers,sort&compress]{natbib}
+\bibliographystyle{unsrtnat}
+
+% ============ 其他 ============
+\usepackage{enumitem}
+\usepackage{setspace}
+\onehalfspacing
+
+% ============ 图表编号格式 ============
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+\numberwithin{equation}{section}
+
+% ============ 行间公式允许分页 ============
+\allowdisplaybreaks
+
+% ============ 元数据 ============
+\title{电动汽车消费者转型分析}
+\author{TeamB DATA2600409}
+\date{2026年7月31日}
+
+\begin{document}
+
+% ============ 摘要页（第1页）============
+\maketitle
+\thispagestyle{empty}
+\input{chapters/00_abstract.tex}
+
+% ============ 目录页（第2页）============
+\newpage
+\thispagestyle{empty}
+\tableofcontents
+\newpage
+
+% ============ 正文开始（第3页起，页码从1开始）============
+\setcounter{page}{1}
+\pagestyle{fancy}
+
+\input{chapters/01_background.tex}
+\input{chapters/02_data.tex}
+\input{chapters/03_task1.tex}
+\input{chapters/04_task2.tex}
+\input{chapters/05_task3.tex}
+\input{chapters/06_discussion.tex}
+\input{chapters/07_conclusion.tex}
+
+% ============ 参考文献 ============
+\bibliography{refs}
+
+% ============ AI工具使用声明 ============
+\input{chapters/08_ai_declaration.tex}
+
+% ============ 附录 ============
+\appendix
+\input{chapters/09_appendix.tex}
+
+\end{document}

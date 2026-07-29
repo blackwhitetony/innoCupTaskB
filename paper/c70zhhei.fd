@@ -1,0 +1,9 @@
+%%
+%% c70zhhei.fd — zhhei (黑体) font family
+%%
+\ProvidesFile{c70zhhei.fd}
+\DeclareFontFamily{C70}{zhhei}{\hyphenchar\font\m@ne}
+\DeclareFontShape{C70}{zhhei}{m}{n}{<-> CJK * gkaiu}{\CJKnormal}
+\DeclareFontShape{C70}{zhhei}{b}{n}{<-> CJKb * gkaiu}{\CJKbold}
+\DeclareFontShape{C70}{zhhei}{bx}{n}{<-> CJKb * gkaiu}{\CJKbold}
+\endinput

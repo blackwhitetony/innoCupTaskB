@@ -1,0 +1,59 @@
+B题数据集 - 数据字典
+========================
+总样本数: 50000
+总特征数: 23 列 (22个特征 + 1个目标变量)
+
+=== 特征列表 ===
+
+序号 | 列名                            | 类型      | 描述                          | 备注
+-----|--------------------------------|-----------|-------------------------------|------------------
+1    | age                             | 数值      | 个人年龄                      | 21-69
+2    | annual_income                   | 数值      | 个人年收入（美元）             | 5104-250000
+3    | education_level                 | 分类      | 最高学历                      | 500缺失; High School/PhD/Master/Bachelor
+4    | city_type                       | 分类      | 居住城市类型                   | Suburban/Urban/Rural
+5    | daily_commute_km                | 数值      | 日均通勤/出行距离（公里）       | 5-97.9
+6    | weekly_travel_distance_km       | 数值      | 每周总出行距离（公里）         | 25-732.3
+7    | current_vehicle_type            | 分类      | 当前主要使用的车辆类型         | Hatchback/Sedan/SUV/Truck
+8    | vehicle_age_years               | 数值      | 当前车辆的车龄（年）           | 0-20
+9    | fuel_expense_per_month          | 数值      | 每月燃油开销                   | 含负值异常-99.7, 需清洗
+10   | charging_station_accessibility  | 数值      | 充电站便利程度（1-10分）       | 500缺失
+11   | nearest_charging_station_km     | 数值      | 距离最近充电站的距离（公里）    |
+12   | home_charging_available         | 二值      | 是否具备家用充电条件           | 0=否, 1=是; Task 2 目标变量
+13   | electricity_cost_per_kwh        | 数值      | 每千瓦时（度）电费             |
+14   | environmental_awareness_score   | 数值      | 环保意识得分（1-10分）         |
+15   | government_incentive_awareness  | 数值      | 对EV政府补贴政策的了解程度(1-10)|
+16   | technology_affinity_score       | 数值      | 对新技术的喜爱/接受度得分(1-10)|
+17   | range_anxiety_score             | 数值      | 里程焦虑程度（1-10分）         | Task 3 目标变量 (>5=高焦虑)
+18   | battery_replacement_concern     | 数值      | 对电池更换成本的担忧程度(1-10) |
+19   | ev_knowledge_score             | 数值      | 对EV技术及优势的认知得分(1-10) | 500缺失
+20   | previous_ev_experience          | 二值      | 是否有过EV拥有或使用经验        | 0=否, 1=是
+21   | ev_adoption_likelihood          | 分类      | 采用/购买EV的可能性            | Task 1 目标变量: Low/Medium/High
+22   | monthly_energy_consumption_kwh  | 数值      | 预估每月EV耗电量（千瓦时）     |
+23   | monthly_charging_cost           | 数值      | 预估每月EV充电费用             |
+
+=== 目标变量分布 ===
+
+Task 1 - ev_adoption_likelihood:
+  High:   29670 (59.3%)
+  Medium: 12078 (24.2%)
+  Low:     8252 (16.5%)
+
+Task 2 - home_charging_available:
+  1: 32488 (65.0%)
+  0: 17512 (35.0%)
+
+Task 3 - range_anxiety_score (建议阈值 >5):
+  需自行处理
+
+=== 数据质量问题 ===
+
+1. 缺失值 (同一批500条记录):
+   - education_level: 500
+   - charging_station_accessibility: 500
+   - ev_knowledge_score: 500
+
+2. 异常值:
+   - fuel_expense_per_month: 最小值 -99.7（疑似异常）
+
+3. 类别不平衡:
+   - Task 1: High类占比59.3%, Low类仅16.5%

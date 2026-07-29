@@ -1,0 +1,15 @@
+%%
+%% Custom c70rm.fd — overrides ctex default to use arphic fonts
+%%
+\ProvidesFile{c70rm.fd}
+\DeclareFontFamily{C70}{rm}{\hyphenchar\font\m@ne}
+\DeclareFontShape{C70}{rm}{m}{n}{<-> CJK * gbsnu}{\CJKnormal}
+\DeclareFontShape{C70}{rm}{b}{n}{<-> CJKb * gbsnu}{\CJKbold}
+\DeclareFontShape{C70}{rm}{bx}{n}{<-> CJKb * gbsnu}{\CJKbold}
+\DeclareFontShape{C70}{rm}{m}{sl}{<-> CJK * gkaiu}{\CJKnormal}
+\DeclareFontShape{C70}{rm}{b}{sl}{<-> CJKb * gkaiu}{\CJKbold}
+\DeclareFontShape{C70}{rm}{bx}{sl}{<-> CJKb * gkaiu}{\CJKbold}
+\DeclareFontShape{C70}{rm}{m}{it}{<-> CJK * gkaiu}{\CJKnormal}
+\DeclareFontShape{C70}{rm}{b}{it}{<-> CJKb * gkaiu}{\CJKbold}
+\DeclareFontShape{C70}{rm}{bx}{it}{<-> CJKb * gkaiu}{\CJKbold}
+\endinput

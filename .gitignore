@@ -1,0 +1,36 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# CatBoost training logs (auto-generated, large)
+catboost_info/
+
+# Logs and temp files
+*.log
+*.rar
+
+# Generated outputs (except EDA images)
+_test.pdf
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+~$*
+
+# opencode proxy script (local only)
+opencode-proxy.bat
+_b_problem.pdf

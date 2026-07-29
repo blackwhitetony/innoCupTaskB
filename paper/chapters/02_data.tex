@@ -1,0 +1,42 @@
+\section{数据探索与预处理}
+
+\subsection{数据概况}
+
+原始数据集共50,000条记录，包含23个字段。其中含3个分类变量（education\_level含500个缺失值、city\_type、current\_vehicle\_type）、2个二值变量（home\_charging\_available、previous\_ev\_experience）和17个连续数值变量。charging\_station\_accessibility与ev\_knowledge\_score各自存在500个空值位置。fuel\_expense\_per\_month一列中检索到271个负值（均为-99.7），属于业务语义上的无效取值，按异常值统一标记。
+
+三个任务的目标变量分布如表\ref{tab:target_dist}所示。
+
+\begin{table}[H]
+\centering
+\caption{目标变量分布}
+\label{tab:target_dist}
+\begin{tabular}{cccc}
+\toprule
+\textbf{任务} & \textbf{目标} & \textbf{类别分布} & \textbf{不均衡程度} \\
+\midrule
+任务一 & ev\_adoption\_likelihood & High 59.3\% / Medium 24.2\% / Low 16.5\% & 严重 \\
+任务二 & home\_charging\_available & 1: 65.0\% / 0: 35.0\% & 轻度 \\
+任务三 & task3\_anxiety\_label & 0: 50.8\% / 1: 49.2\% & 均衡 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{数据清洗流水线}
+
+完整预处理流程由单一Python脚本实现，全链路可复现。步骤如下：
+
+\begin{enumerate}[itemsep=0pt]
+\item \textbf{缺失指示变量}：在数值填补前，分别为education\_level、charging\_station\_accessibility、ev\_knowledge\_score生成缺失指示列（各有500个标记位）。annual\_income与daily\_commute\_km原始数据完整，为保持列结构一致，同样预置恒为0的指示变量。
+\item \textbf{异常值处理}：将fuel\_expense\_per\_month中271个-99.7值置为NaN，同时生成fuel\_expense\_invalid标记列记录异常位置。
+\item \textbf{分类缺失值填充}：education\_level的500个缺失位置以字符串``Missing''填充，作为独立类别参与建模。CatBoost原生支持缺失值识别，线性模型经独热编码后也等价形成独立分类，无需额外预处理。
+\item \textbf{数值缺失值填补}：三个存在缺失的数值列统一以中位数填补：充电站可达性填5.90，EV知识评分填7.00，燃油月支出填295.60。
+\item \textbf{缩尾处理}：全部17个连续变量按1\%与99\%分位数做双边缩尾，分位数边界以外的极端值被钳制至边界值，以控制离群点对后续线性模型参数估计的干扰。
+\item \textbf{对数变换}：对fuel\_expense\_per\_month与annual\_income分别取自然对数，生成ln\_fuel与ln\_income。两个变量原始分布均呈右偏形态，变换后分布对称性明显改善。
+\item \textbf{有序编码}：edu\_ord将学历按递增方向编码为1--4（High School=1, Bachelor=2, Master=3, PhD=4），target\_ord将采用意愿编码为Low=1, Medium=2, High=3。
+\item \textbf{标签编码}：education\_level、city\_type、current\_vehicle\_type三列通过sklearn LabelEncoder转换为整数编码。
+\item \textbf{任务三标签}：以range\_anxiety\_score大于5为阈值生成二值标签（大于5标记为1，否则为0），得到task3\_anxiety\_label列，分布为0: 25395, 1: 24605。
+\end{enumerate}
+
+\subsection{最终数据规格}
+
+清洗结果保存为processed\_data.xlsx，规格为50,000行$\times$34列，较原始23列新增11个衍生列。数据集零缺失值、零无穷值，分类变量全部转换为整数编码，连续变量完成双边缩尾。三个子任务的建模均以该文件为统一数据入口。

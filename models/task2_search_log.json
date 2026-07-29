@@ -1,0 +1,105 @@
+{
+  "best_params": {
+    "depth": 6,
+    "learning_rate": 0.02,
+    "iterations": 800,
+    "l2_leaf_reg": 3.0,
+    "random_strength": 0.5
+  },
+  "best_cv_acc": 0.649875,
+  "best_cv_std": 0.00013693063937625618,
+  "best_threshold": 0.5,
+  "oof_acc_at_best_threshold": 0.649875,
+  "final_val_accuracy": 0.6498,
+  "final_roc_auc": 0.4946790727156043,
+  "search_results": [
+    {
+      "params": {
+        "depth": 9,
+        "learning_rate": 0.02,
+        "iterations": 500,
+        "l2_leaf_reg": 10.0,
+        "random_strength": 0.5
+      },
+      "mean_acc": 0.649875,
+      "std_acc": 0.00013693063937625618
+    },
+    {
+      "params": {
+        "depth": 6,
+        "learning_rate": 0.02,
+        "iterations": 800,
+        "l2_leaf_reg": 10.0,
+        "random_strength": 0.5
+      },
+      "mean_acc": 0.64985,
+      "std_acc": 0.00019999999999997795
+    },
+    {
+      "params": {
+        "depth": 8,
+        "learning_rate": 0.07,
+        "iterations": 1500,
+        "l2_leaf_reg": 15.0,
+        "random_strength": 1.5
+      },
+      "mean_acc": 0.6499749999999999,
+      "std_acc": 0.00012247448713914542
+    },
+    {
+      "params": {
+        "depth": 5,
+        "learning_rate": 0.1,
+        "iterations": 1500,
+        "l2_leaf_reg": 3.0,
+        "random_strength": 0.5
+      },
+      "mean_acc": 0.65005,
+      "std_acc": 0.0002179449471770275
+    },
+    {
+      "params": {
+        "depth": 4,
+        "learning_rate": 0.1,
+        "iterations": 1500,
+        "l2_leaf_reg": 15.0,
+        "random_strength": 0.5
+      },
+      "mean_acc": 0.649925,
+      "std_acc": 0.0002915475947422348
+    },
+    {
+      "params": {
+        "depth": 7,
+        "learning_rate": 0.07,
+        "iterations": 1500,
+        "l2_leaf_reg": 3.0,
+        "random_strength": 1.0
+      },
+      "mean_acc": 0.650175,
+      "std_acc": 0.00038405728739343
+    },
+    {
+      "params": {
+        "depth": 7,
+        "learning_rate": 0.1,
+        "iterations": 1500,
+        "l2_leaf_reg": 7.0,
+        "random_strength": 1.0
+      },
+      "mean_acc": 0.6500999999999999,
+      "std_acc": 0.00051478150704933
+    },
+    {
+      "params": {
+        "depth": 6,
+        "learning_rate": 0.02,
+        "iterations": 800,
+        "l2_leaf_reg": 3.0,
+        "random_strength": 0.5
+      },
+      "mean_acc": 0.649875,
+      "std_acc": 0.00013693063937625618
+    }
+  ]
+}

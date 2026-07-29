@@ -1,0 +1,9 @@
+%%
+%% c70zhkai.fd — zhkai (楷体) font family
+%%
+\ProvidesFile{c70zhkai.fd}
+\DeclareFontFamily{C70}{zhkai}{\hyphenchar\font\m@ne}
+\DeclareFontShape{C70}{zhkai}{m}{n}{<-> CJK * gkaiu}{\CJKnormal}
+\DeclareFontShape{C70}{zhkai}{b}{n}{<-> CJKb * gkaiu}{\CJKbold}
+\DeclareFontShape{C70}{zhkai}{bx}{n}{<-> CJKb * gkaiu}{\CJKbold}
+\endinput

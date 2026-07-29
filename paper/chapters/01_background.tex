@@ -1,0 +1,47 @@
+\section{问题背景与重述}
+
+\subsection{赛题背景}
+
+电动汽车正在重塑交通的未来。消费者从燃油车转向电动车的决策涉及人口特征、通勤模式、充电设施可及性、环保态度、技术接受度与财务状况等多项因素，单一维度的分析难以给出完整刻画。《电动汽车革命：消费者行为与充电洞察》数据集收录50,000条消费者记录，覆盖上述各维度，为消费者转型决策建模提供较为全面的信息基础。
+
+\subsection{三个子问题}
+
+赛题的核心是三个分类任务。它们的预测目标、任务类型和评分权重汇总在表\ref{tab:tasks}中。
+
+\begin{table}[H]
+\centering
+\caption{赛题子问题概览}
+\label{tab:tasks}
+\begin{tabular}{cccc}
+\toprule
+\textbf{子问题} & \textbf{预测目标} & \textbf{类型} & \textbf{权重} \\
+\midrule
+任务一：采用意愿分类 & ev\_adoption\_likelihood (Low/Medium/High) & 三分类 & 20\% \\
+任务二：家充安装潜力预测 & home\_charging\_available (0/1) & 二分类 & 40\% \\
+任务三：里程焦虑敏感度识别 & range\_anxiety\_score $\to$ binary (>5=1, $\le$5=0) & 二分类 & 40\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+最终成绩由三项准确率加权求和得出：
+
+\begin{equation}
+\text{Score} = \text{ACC}_1 \times 100 \times 0.2 + \text{ACC}_2 \times 100 \times 0.4 + \text{ACC}_3 \times 100 \times 0.4
+\label{eq:score}
+\end{equation}
+
+三项子问题中，任务二与任务三合计占评分权重80\%。因此，建模资源分配需向这两项倾斜，不宜在三者之间平均分配。
+
+\subsection{总体技术路线}
+
+为保证结果可复现且不同方案之间具备可比性，三项任务共用一套实验框架：
+
+\begin{enumerate}[itemsep=0pt]
+\item 使用固定随机种子2026，按目标变量进行分层抽样，划分80\%训练集和20\%独立验证集；
+\item 仅在训练集内部执行5折分层交叉验证，用于模型选择和超参数优化；
+\item 所有数据变换（缺失值填补、缩尾边界、编码器）仅从训练折计算，禁止利用验证集统计量；
+\item 每项任务先训练逻辑回归作为可解释性基线，再训练CatBoost作为非线性主模型；
+\item 模型确定后，在独立验证集上仅评估一次，不再反复调整。
+\end{enumerate}
+
+本研究统一采用CatBoost\cite{catboost2018}作为各项任务的主模型。CatBoost原生支持分类特征，city\_type、education\_level等变量可直接输入，无需独热编码转换，简化数据预处理流程。内置的Ordered Boosting与Ordered Target Encoding机制有助于抑制预测偏移；数值缺失值的自动处理也与本研究预处理策略一致。对称树结构参数规模较小，对过拟合具备一定抵抗力。

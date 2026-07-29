@@ -1,0 +1,73 @@
+2026年第五届“创新杯”大学生大数据挑战赛题目
+初赛B：从燃油到纯电：电动汽车消费者转型分析
+一、赛题背景介绍
+电动汽车正在重塑未来的交通方式，但究竟是什么真正促使消费者做出这一转变。
+《电动汽车革命：消费者行为与充电洞察》深入探讨了在不断发展的电动汽车
+生态系统中，充电基础设施、通勤习惯、环保意识、技术接受度以及消费者偏好
+之间的复杂关系。本赛题基于一份包含50,000条消费者记录的电动汽车转型行
+为数据集，涵盖人口统计、通勤行为、充电基础设施、环保意识、技术接受度及
+财务等多维度信息。请参赛队伍利用该数据集，完成以下三个初赛任务。
+二、特征解释
+列名Column 描述Description
+age 个人年龄
+annualincome 个人年收入（美元）
+educationlevel 最高学历
+citytype 居住城市类型（城市、郊区或农村）
+dailycommutekm 日均通勤/出行距离
+weeklytraveldistancekm 每周总出行距离
+currentvehicletype 当前主要使用的车辆类型
+vehicleageyears 当前车辆的车龄（年）
+fuelexpensepermonth 每月燃油开销
+chargingstationaccessibility 充电站便利程度（1-10分）
+nearestchargingstationkm 距离最近充电站的距离（公里）
+homechargingavailable 是否具备家用充电条件（0为否，1为是）
+electricitycostperkwh 每千瓦时（度）电费
+environmentalawarenessscore环保意识得分（1-10分）
+governmentincentiveawareness对电动汽车（EV）政府补贴政策的了解程
+度（1-10分）
+technologyaffinityscore 对新技术的喜爱/接受度得分（1-10分）
+rangeanxietyscore 对电动汽车续航里程的焦虑程度（1-10分）
+batteryreplacementconcern 对电池更换成本的担忧程度（1-10分）
+EVknowledgescore 对电动汽车技术及优势的认知得分（1-10
+分）
+previousevexperience 是否有过电动汽车的拥有或使用经验（0
+为否，1为是）
+EVadoptionlikelihood 采用/购买电动汽车的可能性（低Low/中
+Medium/高High）
+monthlyenergyconsumptionkwh预估每月电动汽车耗电量（千瓦时）
+monthlychargingcost 预估每月电动汽车充电费用
+三、初赛赛题
+任务一：电动汽车采用意愿分类（ClassificationofintentiontoAdopt）
+利用数据集中的消费者画像与行为特征，构建一个三分类模型，预测每位消费者
+的电动汽车采用意愿等级（EVadoptionlikelihood），组委会将根据参赛队伍提
+交测试集每条记录预测类标签和真值类标签进行准确率核对。
+建议输入特征：annualincome、educationlevel、environmentalawarenessscore、
+technologyaffinityscore、rangeanxietyscore、fuelexpensepermonth等
+提交说明：特征工程过程报告、预测结果、模型精度ACC1
+任务二：家庭充电设施安装潜力预测（InstallationPotentialPrediction）
+任务描述：充电运营商计划推广家用充电桩安装服务。请构建模型预测哪些用户
+具备安装家用充电桩的条件或意愿。
+预测指标：homechargingavailable（是否有家用充电条件）。
+处理建议：这是一个二分类问题（0/1）。需重点分析居住环境与基础设施特征。
+建议输入特征：citytype（城市/郊区/农村）、nearestchargingstationkm、education
+level、annualincome、vehicleageyears
+提交说明：提交特征工程过程报告、预测结果、模型精度ACC2
+任务三：里程焦虑敏感度识别（IdentificationofMileageAnxietySensitivity）
+任务描述：为了优化电池营销策略，需要识别出对续航里程极度敏感（焦虑）的
+用户。请构建模型预测用户的“里程焦虑”程度是否高于平均水平。
+预测指标：rangeanxietyscore（里程焦虑评分，1-10分）。
+处理建议：将连续评分转化为二分类标签。建议将评分>5的用户标记为“高
+焦虑”（1），评分≤5的用户标记为“低焦虑”（0），多分类任务也可，由
+选手自行设计。
+建议输入特征：dailycommutekm、weeklytraveldistancekm、chargingstation
+accessibility、evknowledgescore、batteryreplacementconcern。
+提交说明：提交特征工程过程报告、预测结果、模型精度ACC3
+四、初赛评分标准
+初赛成绩=ACC1×100×20%+ACC2×100×40%+ACC3×100×40%
+五、初赛提交说明
+（1）每项任务需提交：模型代码、预测结果CSV文件（含样本行号、真值类标
+签、预测类标签）、建模报告（含特征重要性分析、模型选择依据及调参过程）。
+（2）组委会将在参赛选手提交的测试集上评估各任务的分类准确率，作为最终
+排名依据。
+（3）所有任务需参赛选手自行划分训练集和验证集，禁止使用测试集标签进行
+任何形式的模型训练或超参数选择。

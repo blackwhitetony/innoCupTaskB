@@ -1,0 +1,92 @@
+{
+  "best_params": {
+    "depth": 5,
+    "learning_rate": 0.05,
+    "iterations": 1500,
+    "l2_leaf_reg": 15.0
+  },
+  "best_cv_acc": 0.8730249999999999,
+  "best_cv_std": 0.0024854577043273004,
+  "search_results": [
+    {
+      "params": {
+        "depth": 9,
+        "learning_rate": 0.02,
+        "iterations": 500,
+        "l2_leaf_reg": 10.0
+      },
+      "mean_acc": 0.870675,
+      "std_acc": 0.0011926860441876705
+    },
+    {
+      "params": {
+        "depth": 6,
+        "learning_rate": 0.05,
+        "iterations": 500,
+        "l2_leaf_reg": 5.0
+      },
+      "mean_acc": 0.8729750000000001,
+      "std_acc": 0.0015740076238697374
+    },
+    {
+      "params": {
+        "depth": 8,
+        "learning_rate": 0.03,
+        "iterations": 2000,
+        "l2_leaf_reg": 10.0
+      },
+      "mean_acc": 0.8732749999999999,
+      "std_acc": 0.002105647168924561
+    },
+    {
+      "params": {
+        "depth": 8,
+        "learning_rate": 0.1,
+        "iterations": 1500,
+        "l2_leaf_reg": 3.0
+      },
+      "mean_acc": 0.8727750000000001,
+      "std_acc": 0.0021985790865920525
+    },
+    {
+      "params": {
+        "depth": 9,
+        "learning_rate": 0.07,
+        "iterations": 500,
+        "l2_leaf_reg": 5.0
+      },
+      "mean_acc": 0.872625,
+      "std_acc": 0.0022022715545545334
+    },
+    {
+      "params": {
+        "depth": 5,
+        "learning_rate": 0.1,
+        "iterations": 1500,
+        "l2_leaf_reg": 15.0
+      },
+      "mean_acc": 0.873575,
+      "std_acc": 0.002773310296378668
+    },
+    {
+      "params": {
+        "depth": 6,
+        "learning_rate": 0.07,
+        "iterations": 1500,
+        "l2_leaf_reg": 10.0
+      },
+      "mean_acc": 0.873325,
+      "std_acc": 0.002530563178424912
+    },
+    {
+      "params": {
+        "depth": 5,
+        "learning_rate": 0.05,
+        "iterations": 1500,
+        "l2_leaf_reg": 15.0
+      },
+      "mean_acc": 0.8730249999999999,
+      "std_acc": 0.0024854577043273004
+    }
+  ]
+}

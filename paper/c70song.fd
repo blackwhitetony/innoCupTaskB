@@ -1,0 +1,11 @@
+%%
+%% c70song.fd — override default c70song (replaces cyberb with arphic)
+%%
+\ProvidesFile{c70song.fd}
+\DeclareFontFamily{C70}{song}{\hyphenchar\font\m@ne}
+\DeclareFontShape{C70}{song}{m}{n}{<-> CJK * gbsnu}{\CJKnormal}
+\DeclareFontShape{C70}{song}{b}{n}{<-> CJKb * gbsnu}{\CJKbold}
+\DeclareFontShape{C70}{song}{bx}{n}{<-> CJKb * gbsnu}{\CJKbold}
+\DeclareFontShape{C70}{song}{m}{sl}{<-> CJK * gkaiu}{\CJKnormal}
+\DeclareFontShape{C70}{song}{m}{it}{<-> CJK * gkaiu}{\CJKnormal}
+\endinput

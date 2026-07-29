@@ -1,0 +1,9 @@
+%%
+%% c70zhfs.fd — zhfs (仿宋) font family
+%%
+\ProvidesFile{c70zhfs.fd}
+\DeclareFontFamily{C70}{zhfs}{\hyphenchar\font\m@ne}
+\DeclareFontShape{C70}{zhfs}{m}{n}{<-> CJK * gkaiu}{\CJKnormal}
+\DeclareFontShape{C70}{zhfs}{b}{n}{<-> CJKb * gkaiu}{\CJKbold}
+\DeclareFontShape{C70}{zhfs}{bx}{n}{<-> CJKb * gkaiu}{\CJKbold}
+\endinput

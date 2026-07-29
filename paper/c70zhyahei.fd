@@ -1,0 +1,9 @@
+%%
+%% c70zhyahei.fd — zhyahei (微软雅黑) font family
+%%
+\ProvidesFile{c70zhyahei.fd}
+\DeclareFontFamily{C70}{zhyahei}{\hyphenchar\font\m@ne}
+\DeclareFontShape{C70}{zhyahei}{m}{n}{<-> CJK * gkaiu}{\CJKnormal}
+\DeclareFontShape{C70}{zhyahei}{b}{n}{<-> CJKb * gkaiu}{\CJKbold}
+\DeclareFontShape{C70}{zhyahei}{bx}{n}{<-> CJKb * gkaiu}{\CJKbold}
+\endinput

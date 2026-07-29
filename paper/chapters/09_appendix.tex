@@ -1,0 +1,73 @@
+\section{源代码文件清单}
+
+本研究所使用的源代码文件如下（完整代码见支撑材料）：
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lp{7cm}}
+\toprule
+\textbf{文件} & \textbf{功能说明} \\
+\midrule
+src/common.py & 公共模块：数据加载、分层划分（seed=2026）、评估指标计算、结果保存 \\
+src/features.py & 特征工程模块：三个任务的19个业务特征函数 \\
+src/train\_task1.py & 任务一完整训练流水线（LR基线 $\to$ CatBoost $\to$ CV调参 $\to$ 最终评估） \\
+src/train\_task2.py & 任务二S0/S1/S2三方案流水线 + OOF阈值搜索 \\
+src/train\_task3.py & 任务三Main/Ablation消融流水线 + 边界样本分析 \\
+src/eda\_task1.py & 任务一EDA可视化（3张图） \\
+src/eda\_task2.py & 任务二EDA可视化（3张图） \\
+src/eda\_task3.py & 任务三EDA可视化（4张图） \\
+run\_training.ps1 & 台式机一键训练脚本（GPU/CPU自动切换） \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{运行环境}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+\toprule
+\textbf{项目} & \textbf{配置} \\
+\midrule
+Python版本 & 3.12.2 \\
+包管理器 & uv \\
+核心依赖 & catboost, scikit-learn, pandas, numpy, openpyxl, matplotlib, seaborn \\
+GPU环境 & NVIDIA GeForce RTX 3090 Ti (24 GB) \\
+操作系统 & Windows 11 \\
+随机种子 & 2026 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{开源代码仓库}
+
+本项目全部代码、模型文件及论文 LaTeX 源码均在 GitHub 平台开源：
+
+\begin{itemize}[itemsep=2pt]
+\item \textbf{仓库地址}：\url{https://github.com/blackwhitetony/innoCupTaskB}
+\item \textbf{主要目录}：src/（训练脚本）、models/（训练好的 .cbm 模型文件）、outputs/（预测结果与 EDA 图片）、paper/（论文 LaTeX 源码）
+\item \textbf{许可证}：MIT License
+\end{itemize}
+
+\section{模型调用方式}
+
+支撑材料解压后，在项目根目录执行：
+
+\begin{verbatim}
+uv sync                        # 安装依赖
+uv run python predict.py       # 三个任务全部预测
+\end{verbatim}
+
+也可在代码中按任务逐一调用：
+
+\begin{verbatim}
+from predict import predict_task1, predict_task2, predict_task3
+from common import load_processed_data
+
+df = load_processed_data()
+pred, proba = predict_task1(df)   # 任务一：三分类
+pred, proba = predict_task2(df)   # 任务二：二分类
+pred, proba = predict_task3(df)   # 任务三：二分类
+\end{verbatim}
+
+`predict.py` 自动处理特征工程、目标列删除与模型加载，输入为 `processed\_data.xlsx` 加载后的 DataFrame，输出为预测标签和概率。

@@ -1,0 +1,14 @@
+%%
+%% Custom FD files for ctex CJK fonts using arphic
+%% These override the default unisong/unihei/cyberb definitions
+%%
+%% c70zhsong.fd — zhsong (宋体) font family
+%%
+\ProvidesFile{c70zhsong.fd}
+\DeclareFontFamily{C70}{zhsong}{\hyphenchar\font\m@ne}
+\DeclareFontShape{C70}{zhsong}{m}{n}{<-> CJK * gbsnu}{\CJKnormal}
+\DeclareFontShape{C70}{zhsong}{b}{n}{<-> CJKb * gbsnu}{\CJKbold}
+\DeclareFontShape{C70}{zhsong}{bx}{n}{<-> CJKb * gbsnu}{\CJKbold}
+\DeclareFontShape{C70}{zhsong}{m}{sl}{<-> CJK * gkaiu}{\CJKnormal}
+\DeclareFontShape{C70}{zhsong}{m}{it}{<-> CJK * gkaiu}{\CJKnormal}
+\endinput
